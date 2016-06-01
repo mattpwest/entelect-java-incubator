@@ -1,0 +1,4 @@
+# Ignore IntelliJ files & folders
+.idea
+*.iml
+out
