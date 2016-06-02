@@ -18,7 +18,6 @@ public class Course {
     private Set<Session> sessions = new LinkedHashSet<>();
 
     private Set<Trainee> trainees = new LinkedHashSet<>();
-    private boolean report;
 
     public String getName() {
         return name;
