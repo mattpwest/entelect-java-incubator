@@ -1,5 +1,6 @@
 package za.co.entelect.training.services.impl;
 
+import org.springframework.stereotype.Service;
 import za.co.entelect.training.domain.Course;
 import za.co.entelect.training.domain.user.Trainee;
 import za.co.entelect.training.domain.user.Trainer;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Service
 public class TrainingServiceImpl implements TrainingService {
 
     private Set<Course> courses = new LinkedHashSet<>();

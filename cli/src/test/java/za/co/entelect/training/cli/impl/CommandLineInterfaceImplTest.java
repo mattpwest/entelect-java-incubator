@@ -1,4 +1,4 @@
-package za.co.entelect.training;
+package za.co.entelect.training.cli.impl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +14,12 @@ import java.time.LocalTime;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
-public class MainTest {
+public class CommandLineInterfaceImplTest {
 
     private TrainingService trainingServiceMock = mock(TrainingService.class);
     private Course courseMock = mock(Course.class);
     private Session sessionMock = mock(Session.class);
-    private Main classUnderTest = new Main(trainingServiceMock);
+    private CommandLineInterfaceImpl classUnderTest = new CommandLineInterfaceImpl(trainingServiceMock);
 
     @Before
     public void setUp() {
