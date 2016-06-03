@@ -45,6 +45,7 @@
     <modules>
         <module>cli</module>
         <module>domain</module>
+        <module>services</module>
     </modules>
 
     <build>
