@@ -13,14 +13,18 @@ import java.time.LocalTime;
 public class Main {
 
     public static void main(String[] args) {
-        new Main();
+        TrainingService trainingService = new TrainingServiceImpl();
+        Main main = new Main(trainingService);
+        main.execute();
     }
 
     private TrainingService trainingService;
 
-    private Main() {
-        trainingService = new TrainingServiceImpl();
+    Main(TrainingService injectedTrainingService) {
+        this.trainingService = injectedTrainingService;
+    }
 
+    void execute() {
         System.out.println("### Entelect Training Feedback ###");
 
         Trainer trainer1 = trainingService.addTrainer("Matt", "Van Der Westhuizen", "matt@example.com", "test123");
