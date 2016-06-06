@@ -35,6 +35,34 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>Hopper-SR1</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <!-- Database dependencies -->
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>5.1.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.192</version>
+            </dependency>
+
+            <!-- Testing dependencies -->
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
@@ -54,6 +82,7 @@
         <module>cli</module>
         <module>domain</module>
         <module>services</module>
+        <module>persistence</module>
     </modules>
 
     <build>
