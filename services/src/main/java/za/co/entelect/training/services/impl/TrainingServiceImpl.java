@@ -1,8 +1,11 @@
 package za.co.entelect.training.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import za.co.entelect.training.domain.Course;
 import za.co.entelect.training.domain.user.User;
+import za.co.entelect.training.persistence.user.UserRepository;
 import za.co.entelect.training.services.TrainingService;
 
 import java.time.LocalDate;
@@ -13,8 +16,12 @@ import java.util.Set;
 public class TrainingServiceImpl implements TrainingService {
 
     private Set<Course> courses = new LinkedHashSet<>();
-    private Set<User> trainers = new LinkedHashSet<>();
-    private Set<User> trainees = new LinkedHashSet<>();
+    private UserRepository userRepository;
+
+    @Autowired
+    public TrainingServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public Course addCourse(String name, LocalDate start, LocalDate end) {
         Course course = new Course();
@@ -27,6 +34,7 @@ public class TrainingServiceImpl implements TrainingService {
         return course;
     }
 
+    @Transactional
     public User addTrainee(String firstName, String lastName, String email, String password) {
         User trainee = new User();
         trainee.setFirstName(firstName);
@@ -34,11 +42,12 @@ public class TrainingServiceImpl implements TrainingService {
         trainee.setEmail(email);
         trainee.setPassword(password);
 
-        trainees.add(trainee);
+        userRepository.save(trainee);
 
         return trainee;
     }
 
+    @Transactional
     public User addTrainer(String firstName, String lastName, String email, String password) {
         User trainer = new User();
         trainer.setFirstName(firstName);
@@ -46,7 +55,7 @@ public class TrainingServiceImpl implements TrainingService {
         trainer.setEmail(email);
         trainer.setPassword(password);
 
-        trainers.add(trainer);
+        userRepository.save(trainer);
 
         return trainer;
     }
