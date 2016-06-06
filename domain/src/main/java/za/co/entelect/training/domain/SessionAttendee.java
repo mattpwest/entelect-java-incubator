@@ -1,12 +1,12 @@
 package za.co.entelect.training.domain;
 
-import za.co.entelect.training.domain.user.Trainee;
+import za.co.entelect.training.domain.user.User;
 
 public class SessionAttendee {
 
     private Session session;
 
-    private Trainee trainee;
+    private User trainee;
 
     private Boolean attended = false;
 
@@ -22,11 +22,11 @@ public class SessionAttendee {
         this.session = session;
     }
 
-    public Trainee getTrainee() {
+    public User getTrainee() {
         return trainee;
     }
 
-    public void setTrainee(Trainee trainee) {
+    public void setTrainee(User trainee) {
         this.trainee = trainee;
     }
 

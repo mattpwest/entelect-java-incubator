@@ -1,6 +1,6 @@
 package za.co.entelect.training.domain;
 
-import za.co.entelect.training.domain.user.Trainee;
+import za.co.entelect.training.domain.user.User;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,7 +17,7 @@ public class Course {
 
     private Set<Session> sessions = new LinkedHashSet<>();
 
-    private Set<Trainee> trainees = new LinkedHashSet<>();
+    private Set<User> trainees = new LinkedHashSet<>();
 
     public String getName() {
         return name;
@@ -51,11 +51,11 @@ public class Course {
         this.sessions = sessions;
     }
 
-    public Set<Trainee> getTrainees() {
+    public Set<User> getTrainees() {
         return trainees;
     }
 
-    public void setTrainees(Set<Trainee> trainees) {
+    public void setTrainees(Set<User> trainees) {
         this.trainees = trainees;
     }
 
@@ -70,7 +70,7 @@ public class Course {
         return session;
     }
 
-    public void addTrainee(Trainee trainee) {
+    public void addTrainee(User trainee) {
         trainees.add(trainee);
     }
 

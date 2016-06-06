@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import za.co.entelect.training.domain.Course;
 import za.co.entelect.training.domain.Session;
-import za.co.entelect.training.domain.user.Trainee;
-import za.co.entelect.training.domain.user.Trainer;
+import za.co.entelect.training.domain.user.User;
 import za.co.entelect.training.services.TrainingService;
 
 import java.time.LocalDate;
@@ -31,7 +30,7 @@ public class CommandLineInterfaceImplTest {
                 .thenReturn(courseMock);
 
         when(trainingServiceMock.addTrainee(any(String.class), any(String.class), any(String.class), any(String.class)))
-                .thenReturn(mock(Trainee.class));
+                .thenReturn(mock(User.class));
 
         when(courseMock.addSession(any(String.class), any(LocalTime.class), any(LocalTime.class)))
                 .thenReturn(sessionMock);
@@ -61,7 +60,7 @@ public class CommandLineInterfaceImplTest {
         classUnderTest.execute();
 
         verify(courseMock, times(4))
-                .addTrainee(any(Trainee.class));
+                .addTrainee(any(User.class));
     }
 
     @Test
@@ -77,7 +76,7 @@ public class CommandLineInterfaceImplTest {
         classUnderTest.execute();
 
         verify(sessionMock, times(1))
-                .addPresenter(any(Trainer.class));
+                .addPresenter(any(User.class));
     }
 
     @Test
@@ -85,7 +84,7 @@ public class CommandLineInterfaceImplTest {
         classUnderTest.execute();
 
         verify(sessionMock, times(2))
-                .recordFeedback(any(Trainee.class), any(Byte.class), any(String.class));
+                .recordFeedback(any(User.class), any(Byte.class), any(String.class));
     }
 
     @Test
@@ -93,6 +92,6 @@ public class CommandLineInterfaceImplTest {
         classUnderTest.execute();
 
         verify(sessionMock, times(1))
-                .recordAttendance(any(Trainee.class));
+                .recordAttendance(any(User.class));
     }
 }

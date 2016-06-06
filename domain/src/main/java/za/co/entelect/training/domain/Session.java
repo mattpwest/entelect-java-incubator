@@ -1,7 +1,6 @@
 package za.co.entelect.training.domain;
 
-import za.co.entelect.training.domain.user.Trainee;
-import za.co.entelect.training.domain.user.Trainer;
+import za.co.entelect.training.domain.user.User;
 
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
@@ -15,7 +14,7 @@ public class Session {
 
     private LocalTime end;
 
-    private Set<Trainer> presenters = new LinkedHashSet<>();
+    private Set<User> presenters = new LinkedHashSet<>();
 
     private Set<SessionAttendee> attendees = new LinkedHashSet<>();
 
@@ -43,11 +42,11 @@ public class Session {
         this.end = end;
     }
 
-    public Set<Trainer> getPresenters() {
+    public Set<User> getPresenters() {
         return presenters;
     }
 
-    public void setPresenters(Set<Trainer> presenters) {
+    public void setPresenters(Set<User> presenters) {
         this.presenters = presenters;
     }
 
@@ -59,11 +58,11 @@ public class Session {
         this.attendees = attendees;
     }
 
-    public void addPresenter(Trainer trainer) {
+    public void addPresenter(User trainer) {
         presenters.add(trainer);
     }
 
-    protected SessionAttendee findOrCreateAttendee(Trainee trainee) {
+    protected SessionAttendee findOrCreateAttendee(User trainee) {
         SessionAttendee attendee = null;
         for (SessionAttendee anAttendee : attendees) {
             if (anAttendee.getTrainee().equals(trainee)) {
@@ -80,13 +79,13 @@ public class Session {
         return attendee;
     }
 
-    public void recordAttendance(Trainee trainee) {
+    public void recordAttendance(User trainee) {
         SessionAttendee attendee = findOrCreateAttendee(trainee);
 
         attendee.setAttended(true);
     }
 
-    public void recordFeedback(Trainee trainee, Byte stars, String feedback) {
+    public void recordFeedback(User trainee, Byte stars, String feedback) {
         SessionAttendee attendee = findOrCreateAttendee(trainee);
 
         attendee.setAttended(true);

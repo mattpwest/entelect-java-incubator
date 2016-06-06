@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 import za.co.entelect.training.cli.CommandLineInterface;
 import za.co.entelect.training.domain.Course;
 import za.co.entelect.training.domain.Session;
-import za.co.entelect.training.domain.user.Trainee;
-import za.co.entelect.training.domain.user.Trainer;
+import za.co.entelect.training.domain.user.User;
 import za.co.entelect.training.services.TrainingService;
 
 import java.time.LocalDate;
@@ -26,12 +25,12 @@ public class CommandLineInterfaceImpl implements CommandLineInterface {
     public void execute() {
         System.out.println("### Entelect Training Feedback ###");
 
-        Trainer trainer1 = trainingService.addTrainer("Matt", "Van Der Westhuizen", "matt@example.com", "test123");
+        User trainer1 = trainingService.addTrainer("Matt", "Van Der Westhuizen", "matt@example.com", "test123");
 
-        Trainee trainee1 = trainingService.addTrainee("Christoff", "Smith", "christoff.smith@example.com", "test123");
-        Trainee trainee2 = trainingService.addTrainee("Yageshrin", "Govender", "yageshrin.govender@example.com", "test123");
-        Trainee trainee3 = trainingService.addTrainee("Ulrich", "Matthiae", "ulrich.matthiae@example.com", "test123");
-        Trainee trainee4 = trainingService.addTrainee("Pierre", "Roux", "pierre.roux@example.com", "test123");
+        User trainee1 = trainingService.addTrainee("Christoff", "Smith", "christoff.smith@example.com", "test123");
+        User trainee2 = trainingService.addTrainee("Yageshrin", "Govender", "yageshrin.govender@example.com", "test123");
+        User trainee3 = trainingService.addTrainee("Ulrich", "Matthiae", "ulrich.matthiae@example.com", "test123");
+        User trainee4 = trainingService.addTrainee("Pierre", "Roux", "pierre.roux@example.com", "test123");
 
         Course course = trainingService.addCourse("Java Forum: JPA", LocalDate.of(2016, 5, 31), LocalDate.of(2016, 5, 31));
         course.addTrainee(trainee1);

@@ -2,8 +2,7 @@ package za.co.entelect.training.services.impl;
 
 import org.springframework.stereotype.Service;
 import za.co.entelect.training.domain.Course;
-import za.co.entelect.training.domain.user.Trainee;
-import za.co.entelect.training.domain.user.Trainer;
+import za.co.entelect.training.domain.user.User;
 import za.co.entelect.training.services.TrainingService;
 
 import java.time.LocalDate;
@@ -14,8 +13,8 @@ import java.util.Set;
 public class TrainingServiceImpl implements TrainingService {
 
     private Set<Course> courses = new LinkedHashSet<>();
-    private Set<Trainer> trainers = new LinkedHashSet<>();
-    private Set<Trainee> trainees = new LinkedHashSet<>();
+    private Set<User> trainers = new LinkedHashSet<>();
+    private Set<User> trainees = new LinkedHashSet<>();
 
     public Course addCourse(String name, LocalDate start, LocalDate end) {
         Course course = new Course();
@@ -28,8 +27,8 @@ public class TrainingServiceImpl implements TrainingService {
         return course;
     }
 
-    public Trainee addTrainee(String firstName, String lastName, String email, String password) {
-        Trainee trainee = new Trainee();
+    public User addTrainee(String firstName, String lastName, String email, String password) {
+        User trainee = new User();
         trainee.setFirstName(firstName);
         trainee.setLastName(lastName);
         trainee.setEmail(email);
@@ -40,8 +39,8 @@ public class TrainingServiceImpl implements TrainingService {
         return trainee;
     }
 
-    public Trainer addTrainer(String firstName, String lastName, String email, String password) {
-        Trainer trainer = new Trainer();
+    public User addTrainer(String firstName, String lastName, String email, String password) {
+        User trainer = new User();
         trainer.setFirstName(firstName);
         trainer.setLastName(lastName);
         trainer.setEmail(email);

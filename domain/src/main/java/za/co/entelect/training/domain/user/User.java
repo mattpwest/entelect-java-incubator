@@ -1,6 +1,14 @@
 package za.co.entelect.training.domain.user;
 
-public class User {
+import za.co.entelect.training.domain.common.IdentifiableEntity;
+
+import javax.persistence.Entity;
+import java.io.Serializable;
+
+@Entity
+public class User extends IdentifiableEntity implements Serializable {
+
+    public static final long serialVersionUID = 1L;
 
     private String firstName;
 
