@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import za.co.entelect.training.domain.user.User;
-import za.co.entelect.training.persistence.PersistenceTestBase;
+import za.co.entelect.training.persistence.common.PersistenceTestBase;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

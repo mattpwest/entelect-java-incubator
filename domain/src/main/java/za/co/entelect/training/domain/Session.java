@@ -1,21 +1,42 @@
 package za.co.entelect.training.domain;
 
+import za.co.entelect.training.domain.common.IdentifiableEntity;
 import za.co.entelect.training.domain.user.User;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Session {
+@Entity
+public class Session extends IdentifiableEntity implements Serializable {
+
+    public static final long serialVersionUID = 1L;
 
     private String name;
 
+    @Column(columnDefinition = "DATE")
+    private LocalDate date;
+
+    @Column(columnDefinition = "TIME")
     private LocalTime start;
 
+    @Column(columnDefinition = "TIME")
     private LocalTime end;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Course")
+    private Course course;
+
+    @ManyToMany
+    @JoinTable(name = "SessionPresenters",
+            joinColumns = {@JoinColumn(name = "Session", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "User", referencedColumnName = "id")})
     private Set<User> presenters = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "session")
     private Set<SessionAttendee> attendees = new LinkedHashSet<>();
 
     public String getName() {
@@ -24,6 +45,22 @@ public class Session {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public LocalTime getStart() {

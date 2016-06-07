@@ -1,22 +1,35 @@
 package za.co.entelect.training.domain;
 
+import za.co.entelect.training.domain.common.IdentifiableEntity;
 import za.co.entelect.training.domain.user.User;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Course {
+@Entity
+public class Course extends IdentifiableEntity implements Serializable {
+
+    public static final long serialVersionUID = 1L;
 
     private String name;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate start;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate end;
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private Set<Session> sessions = new LinkedHashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "CourseAttendee",
+                joinColumns = {@JoinColumn(name = "Course", referencedColumnName = "id")},
+                inverseJoinColumns = {@JoinColumn(name = "User", referencedColumnName = "id")})
     private Set<User> trainees = new LinkedHashSet<>();
 
     public String getName() {

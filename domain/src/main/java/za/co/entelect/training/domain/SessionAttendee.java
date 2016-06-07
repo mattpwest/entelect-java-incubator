@@ -1,17 +1,33 @@
 package za.co.entelect.training.domain;
 
+import za.co.entelect.training.domain.common.IdentifiableEntity;
 import za.co.entelect.training.domain.user.User;
 
-public class SessionAttendee {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
+@Entity
+public class SessionAttendee extends IdentifiableEntity implements Serializable {
+
+    public static final long serialVersionUID = 1L;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Session")
     private Session session;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Trainee")
     private User trainee;
 
     private Boolean attended = false;
 
+    @Column(nullable = true)
     private Byte stars = null;
 
+    @Column(nullable = true)
     private String feedback;
 
     public Session getSession() {

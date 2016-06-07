@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.entelect.training.domain.Course;
 import za.co.entelect.training.domain.user.User;
+import za.co.entelect.training.persistence.CourseRepository;
 import za.co.entelect.training.persistence.user.UserRepository;
 import za.co.entelect.training.services.TrainingService;
 
@@ -15,11 +16,12 @@ import java.util.Set;
 @Service
 public class TrainingServiceImpl implements TrainingService {
 
-    private Set<Course> courses = new LinkedHashSet<>();
+    private CourseRepository courseRepository;
     private UserRepository userRepository;
 
     @Autowired
-    public TrainingServiceImpl(UserRepository userRepository) {
+    public TrainingServiceImpl(CourseRepository courseRepository, UserRepository userRepository) {
+        this.courseRepository = courseRepository;
         this.userRepository = userRepository;
     }
 
@@ -29,7 +31,7 @@ public class TrainingServiceImpl implements TrainingService {
         course.setStart(start);
         course.setEnd(end);
 
-        courses.add(course);
+        courseRepository.save(course);
 
         return course;
     }
@@ -62,7 +64,7 @@ public class TrainingServiceImpl implements TrainingService {
 
     public Set<String> getCourses() {
         Set<String> courseNames = new LinkedHashSet<>();
-        for (Course course : courses) {
+        for (Course course : courseRepository.findAll()) {
             courseNames.add(course.getName());
         }
 
