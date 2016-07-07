@@ -83,6 +83,7 @@
         <module>domain</module>
         <module>services</module>
         <module>persistence</module>
+        <module>web</module>
     </modules>
 
     <build>
